@@ -1,0 +1,25 @@
+
+spring:
+  profiles: wm
+  datasource:
+      type: com.zaxxer.hikari.HikariDataSource
+      url: jdbc:sqlserver://10.0.128.114:1433; DatabaseName=YINGUSYSTEM
+      username: sa
+      password: 123.abc
+      driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+      hikari:
+        idle-timeout: 150000
+  data:
+      mongodb:
+        uri: mongodb://localhost:27017/risk_credit
+mybatis:
+  typeAliasesPackage: com.yingu.project.persistence.mysql.entity
+#  mapperLocations: classpath:src/mapper/*.xml
+  mapperLocations: classpath*:com/yingu/project/persistence/mysql/mapping/*.xml
+#eureka:
+#  client:
+#    serviceUrl:
+#      defaultZone: http://localhost:9001/eureka/
+
+
+

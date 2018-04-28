@@ -1,0 +1,563 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yingu.project.persistence.mysql.mapper.XDOrder_TableMapper" >
+  <resultMap id="BaseResultMap" type="com.yingu.project.persistence.mysql.entity.XDOrder_Table" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="ordernum" property="ordernum" jdbcType="VARCHAR" />
+    <result column="OrderTime" property="ordertime" jdbcType="TIMESTAMP" />
+    <result column="ProID" property="proid" jdbcType="INTEGER" />
+    <result column="ProName" property="proname" jdbcType="VARCHAR" />
+    <result column="UserID" property="userid" jdbcType="INTEGER" />
+    <result column="UserName" property="username" jdbcType="NVARCHAR" />
+    <result column="Family" property="family" jdbcType="BIT" />
+    <result column="MarID" property="marid" jdbcType="INTEGER" />
+    <result column="MarName" property="marname" jdbcType="NVARCHAR" />
+    <result column="Rate" property="rate" jdbcType="DECIMAL" />
+    <result column="zhengxin" property="zhengxin" jdbcType="BIT" />
+    <result column="OrderState" property="orderstate" jdbcType="VARCHAR" />
+    <result column="Loan" property="loan" jdbcType="DECIMAL" />
+    <result column="ActuaLoan" property="actualoan" jdbcType="DECIMAL" />
+    <result column="LoanTime" property="loantime" jdbcType="VARCHAR" />
+    <result column="SaleChannel" property="salechannel" jdbcType="VARCHAR" />
+    <result column="Urgent" property="urgent" jdbcType="BIT" />
+    <result column="FuYi" property="fuyi" jdbcType="VARCHAR" />
+    <result column="LoanUse" property="loanuse" jdbcType="NVARCHAR" />
+    <result column="RufundWay" property="rufundway" jdbcType="NVARCHAR" />
+    <result column="SalesName" property="salesname" jdbcType="NVARCHAR" />
+    <result column="SalesID" property="salesid" jdbcType="INTEGER" />
+    <result column="UseCard" property="usecard" jdbcType="VARCHAR" />
+    <result column="RollBackState" property="rollbackstate" jdbcType="VARCHAR" />
+    <result column="ISPhoto" property="isphoto" jdbcType="BIT" />
+    <result column="Stated" property="stated" jdbcType="NVARCHAR" />
+    <result column="admin_id" property="adminId" jdbcType="INTEGER" />
+    <result column="admin_nickname" property="adminNickname" jdbcType="NVARCHAR" />
+    <result column="XDExtendLoan" property="xdextendloan" jdbcType="DECIMAL" />
+    <result column="XDExtendTime" property="xdextendtime" jdbcType="NVARCHAR" />
+    <result column="XDExtendRate" property="xdextendrate" jdbcType="NVARCHAR" />
+    <result column="XDProid" property="xdproid" jdbcType="INTEGER" />
+    <result column="IsCommonLoan" property="iscommonloan" jdbcType="CHAR" />
+    <result column="QuitReason" property="quitreason" jdbcType="INTEGER" />
+    <result column="LastOperationTime" property="lastoperationtime" jdbcType="TIMESTAMP" />
+    <result column="OrderType" property="ordertype" jdbcType="INTEGER" />
+    <result column="IsOnline" property="isonline" jdbcType="INTEGER" />
+    <result column="BindingID" property="bindingid" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.yingu.project.persistence.mysql.entity.XDOrder_Table" extends="BaseResultMap" >
+    <result column="TIMESTAMP" property="timestamp" jdbcType="BINARY" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, ordernum, OrderTime, ProID, ProName, UserID, UserName, Family, MarID, MarName, 
+    Rate, zhengxin, OrderState, Loan, ActuaLoan, LoanTime, SaleChannel, Urgent, FuYi, 
+    LoanUse, RufundWay, SalesName, SalesID, UseCard, RollBackState, ISPhoto, Stated, 
+    admin_id, admin_nickname, XDExtendLoan, XDExtendTime, XDExtendRate, XDProid, IsCommonLoan, 
+    QuitReason, LastOperationTime, OrderType, IsOnline, BindingID
+  </sql>
+  <sql id="Blob_Column_List" >
+    TIMESTAMP
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from XDOrder_Table
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from XDOrder_Table
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yingu.project.persistence.mysql.entity.XDOrder_Table" >
+    insert into XDOrder_Table (id, ordernum, OrderTime, 
+      ProID, ProName, UserID, 
+      UserName, Family, MarID, 
+      MarName, Rate, zhengxin, 
+      OrderState, Loan, ActuaLoan, 
+      LoanTime, SaleChannel, Urgent, 
+      FuYi, LoanUse, RufundWay, 
+      SalesName, SalesID, UseCard, 
+      RollBackState, ISPhoto, Stated, 
+      admin_id, admin_nickname, XDExtendLoan, 
+      XDExtendTime, XDExtendRate, XDProid, 
+      IsCommonLoan, QuitReason, LastOperationTime, 
+      OrderType, IsOnline, BindingID, 
+      TIMESTAMP)
+    values (#{id,jdbcType=INTEGER}, #{ordernum,jdbcType=VARCHAR}, #{ordertime,jdbcType=TIMESTAMP}, 
+      #{proid,jdbcType=INTEGER}, #{proname,jdbcType=VARCHAR}, #{userid,jdbcType=INTEGER}, 
+      #{username,jdbcType=NVARCHAR}, #{family,jdbcType=BIT}, #{marid,jdbcType=INTEGER}, 
+      #{marname,jdbcType=NVARCHAR}, #{rate,jdbcType=DECIMAL}, #{zhengxin,jdbcType=BIT}, 
+      #{orderstate,jdbcType=VARCHAR}, #{loan,jdbcType=DECIMAL}, #{actualoan,jdbcType=DECIMAL}, 
+      #{loantime,jdbcType=VARCHAR}, #{salechannel,jdbcType=VARCHAR}, #{urgent,jdbcType=BIT}, 
+      #{fuyi,jdbcType=VARCHAR}, #{loanuse,jdbcType=NVARCHAR}, #{rufundway,jdbcType=NVARCHAR}, 
+      #{salesname,jdbcType=NVARCHAR}, #{salesid,jdbcType=INTEGER}, #{usecard,jdbcType=VARCHAR}, 
+      #{rollbackstate,jdbcType=VARCHAR}, #{isphoto,jdbcType=BIT}, #{stated,jdbcType=NVARCHAR}, 
+      #{adminId,jdbcType=INTEGER}, #{adminNickname,jdbcType=NVARCHAR}, #{xdextendloan,jdbcType=DECIMAL}, 
+      #{xdextendtime,jdbcType=NVARCHAR}, #{xdextendrate,jdbcType=NVARCHAR}, #{xdproid,jdbcType=INTEGER}, 
+      #{iscommonloan,jdbcType=CHAR}, #{quitreason,jdbcType=INTEGER}, #{lastoperationtime,jdbcType=TIMESTAMP}, 
+      #{ordertype,jdbcType=INTEGER}, #{isonline,jdbcType=INTEGER}, #{bindingid,jdbcType=VARCHAR}, 
+      #{timestamp,jdbcType=BINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yingu.project.persistence.mysql.entity.XDOrder_Table" >
+    insert into XDOrder_Table
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="ordernum != null" >
+        ordernum,
+      </if>
+      <if test="ordertime != null" >
+        OrderTime,
+      </if>
+      <if test="proid != null" >
+        ProID,
+      </if>
+      <if test="proname != null" >
+        ProName,
+      </if>
+      <if test="userid != null" >
+        UserID,
+      </if>
+      <if test="username != null" >
+        UserName,
+      </if>
+      <if test="family != null" >
+        Family,
+      </if>
+      <if test="marid != null" >
+        MarID,
+      </if>
+      <if test="marname != null" >
+        MarName,
+      </if>
+      <if test="rate != null" >
+        Rate,
+      </if>
+      <if test="zhengxin != null" >
+        zhengxin,
+      </if>
+      <if test="orderstate != null" >
+        OrderState,
+      </if>
+      <if test="loan != null" >
+        Loan,
+      </if>
+      <if test="actualoan != null" >
+        ActuaLoan,
+      </if>
+      <if test="loantime != null" >
+        LoanTime,
+      </if>
+      <if test="salechannel != null" >
+        SaleChannel,
+      </if>
+      <if test="urgent != null" >
+        Urgent,
+      </if>
+      <if test="fuyi != null" >
+        FuYi,
+      </if>
+      <if test="loanuse != null" >
+        LoanUse,
+      </if>
+      <if test="rufundway != null" >
+        RufundWay,
+      </if>
+      <if test="salesname != null" >
+        SalesName,
+      </if>
+      <if test="salesid != null" >
+        SalesID,
+      </if>
+      <if test="usecard != null" >
+        UseCard,
+      </if>
+      <if test="rollbackstate != null" >
+        RollBackState,
+      </if>
+      <if test="isphoto != null" >
+        ISPhoto,
+      </if>
+      <if test="stated != null" >
+        Stated,
+      </if>
+      <if test="adminId != null" >
+        admin_id,
+      </if>
+      <if test="adminNickname != null" >
+        admin_nickname,
+      </if>
+      <if test="xdextendloan != null" >
+        XDExtendLoan,
+      </if>
+      <if test="xdextendtime != null" >
+        XDExtendTime,
+      </if>
+      <if test="xdextendrate != null" >
+        XDExtendRate,
+      </if>
+      <if test="xdproid != null" >
+        XDProid,
+      </if>
+      <if test="iscommonloan != null" >
+        IsCommonLoan,
+      </if>
+      <if test="quitreason != null" >
+        QuitReason,
+      </if>
+      <if test="lastoperationtime != null" >
+        LastOperationTime,
+      </if>
+      <if test="ordertype != null" >
+        OrderType,
+      </if>
+      <if test="isonline != null" >
+        IsOnline,
+      </if>
+      <if test="bindingid != null" >
+        BindingID,
+      </if>
+      <if test="timestamp != null" >
+        TIMESTAMP,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="ordernum != null" >
+        #{ordernum,jdbcType=VARCHAR},
+      </if>
+      <if test="ordertime != null" >
+        #{ordertime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="proid != null" >
+        #{proid,jdbcType=INTEGER},
+      </if>
+      <if test="proname != null" >
+        #{proname,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=NVARCHAR},
+      </if>
+      <if test="family != null" >
+        #{family,jdbcType=BIT},
+      </if>
+      <if test="marid != null" >
+        #{marid,jdbcType=INTEGER},
+      </if>
+      <if test="marname != null" >
+        #{marname,jdbcType=NVARCHAR},
+      </if>
+      <if test="rate != null" >
+        #{rate,jdbcType=DECIMAL},
+      </if>
+      <if test="zhengxin != null" >
+        #{zhengxin,jdbcType=BIT},
+      </if>
+      <if test="orderstate != null" >
+        #{orderstate,jdbcType=VARCHAR},
+      </if>
+      <if test="loan != null" >
+        #{loan,jdbcType=DECIMAL},
+      </if>
+      <if test="actualoan != null" >
+        #{actualoan,jdbcType=DECIMAL},
+      </if>
+      <if test="loantime != null" >
+        #{loantime,jdbcType=VARCHAR},
+      </if>
+      <if test="salechannel != null" >
+        #{salechannel,jdbcType=VARCHAR},
+      </if>
+      <if test="urgent != null" >
+        #{urgent,jdbcType=BIT},
+      </if>
+      <if test="fuyi != null" >
+        #{fuyi,jdbcType=VARCHAR},
+      </if>
+      <if test="loanuse != null" >
+        #{loanuse,jdbcType=NVARCHAR},
+      </if>
+      <if test="rufundway != null" >
+        #{rufundway,jdbcType=NVARCHAR},
+      </if>
+      <if test="salesname != null" >
+        #{salesname,jdbcType=NVARCHAR},
+      </if>
+      <if test="salesid != null" >
+        #{salesid,jdbcType=INTEGER},
+      </if>
+      <if test="usecard != null" >
+        #{usecard,jdbcType=VARCHAR},
+      </if>
+      <if test="rollbackstate != null" >
+        #{rollbackstate,jdbcType=VARCHAR},
+      </if>
+      <if test="isphoto != null" >
+        #{isphoto,jdbcType=BIT},
+      </if>
+      <if test="stated != null" >
+        #{stated,jdbcType=NVARCHAR},
+      </if>
+      <if test="adminId != null" >
+        #{adminId,jdbcType=INTEGER},
+      </if>
+      <if test="adminNickname != null" >
+        #{adminNickname,jdbcType=NVARCHAR},
+      </if>
+      <if test="xdextendloan != null" >
+        #{xdextendloan,jdbcType=DECIMAL},
+      </if>
+      <if test="xdextendtime != null" >
+        #{xdextendtime,jdbcType=NVARCHAR},
+      </if>
+      <if test="xdextendrate != null" >
+        #{xdextendrate,jdbcType=NVARCHAR},
+      </if>
+      <if test="xdproid != null" >
+        #{xdproid,jdbcType=INTEGER},
+      </if>
+      <if test="iscommonloan != null" >
+        #{iscommonloan,jdbcType=CHAR},
+      </if>
+      <if test="quitreason != null" >
+        #{quitreason,jdbcType=INTEGER},
+      </if>
+      <if test="lastoperationtime != null" >
+        #{lastoperationtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ordertype != null" >
+        #{ordertype,jdbcType=INTEGER},
+      </if>
+      <if test="isonline != null" >
+        #{isonline,jdbcType=INTEGER},
+      </if>
+      <if test="bindingid != null" >
+        #{bindingid,jdbcType=VARCHAR},
+      </if>
+      <if test="timestamp != null" >
+        #{timestamp,jdbcType=BINARY},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yingu.project.persistence.mysql.entity.XDOrder_Table" >
+    update XDOrder_Table
+    <set >
+      <if test="ordernum != null" >
+        ordernum = #{ordernum,jdbcType=VARCHAR},
+      </if>
+      <if test="ordertime != null" >
+        OrderTime = #{ordertime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="proid != null" >
+        ProID = #{proid,jdbcType=INTEGER},
+      </if>
+      <if test="proname != null" >
+        ProName = #{proname,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null" >
+        UserID = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="username != null" >
+        UserName = #{username,jdbcType=NVARCHAR},
+      </if>
+      <if test="family != null" >
+        Family = #{family,jdbcType=BIT},
+      </if>
+      <if test="marid != null" >
+        MarID = #{marid,jdbcType=INTEGER},
+      </if>
+      <if test="marname != null" >
+        MarName = #{marname,jdbcType=NVARCHAR},
+      </if>
+      <if test="rate != null" >
+        Rate = #{rate,jdbcType=DECIMAL},
+      </if>
+      <if test="zhengxin != null" >
+        zhengxin = #{zhengxin,jdbcType=BIT},
+      </if>
+      <if test="orderstate != null" >
+        OrderState = #{orderstate,jdbcType=VARCHAR},
+      </if>
+      <if test="loan != null" >
+        Loan = #{loan,jdbcType=DECIMAL},
+      </if>
+      <if test="actualoan != null" >
+        ActuaLoan = #{actualoan,jdbcType=DECIMAL},
+      </if>
+      <if test="loantime != null" >
+        LoanTime = #{loantime,jdbcType=VARCHAR},
+      </if>
+      <if test="salechannel != null" >
+        SaleChannel = #{salechannel,jdbcType=VARCHAR},
+      </if>
+      <if test="urgent != null" >
+        Urgent = #{urgent,jdbcType=BIT},
+      </if>
+      <if test="fuyi != null" >
+        FuYi = #{fuyi,jdbcType=VARCHAR},
+      </if>
+      <if test="loanuse != null" >
+        LoanUse = #{loanuse,jdbcType=NVARCHAR},
+      </if>
+      <if test="rufundway != null" >
+        RufundWay = #{rufundway,jdbcType=NVARCHAR},
+      </if>
+      <if test="salesname != null" >
+        SalesName = #{salesname,jdbcType=NVARCHAR},
+      </if>
+      <if test="salesid != null" >
+        SalesID = #{salesid,jdbcType=INTEGER},
+      </if>
+      <if test="usecard != null" >
+        UseCard = #{usecard,jdbcType=VARCHAR},
+      </if>
+      <if test="rollbackstate != null" >
+        RollBackState = #{rollbackstate,jdbcType=VARCHAR},
+      </if>
+      <if test="isphoto != null" >
+        ISPhoto = #{isphoto,jdbcType=BIT},
+      </if>
+      <if test="stated != null" >
+        Stated = #{stated,jdbcType=NVARCHAR},
+      </if>
+      <if test="adminId != null" >
+        admin_id = #{adminId,jdbcType=INTEGER},
+      </if>
+      <if test="adminNickname != null" >
+        admin_nickname = #{adminNickname,jdbcType=NVARCHAR},
+      </if>
+      <if test="xdextendloan != null" >
+        XDExtendLoan = #{xdextendloan,jdbcType=DECIMAL},
+      </if>
+      <if test="xdextendtime != null" >
+        XDExtendTime = #{xdextendtime,jdbcType=NVARCHAR},
+      </if>
+      <if test="xdextendrate != null" >
+        XDExtendRate = #{xdextendrate,jdbcType=NVARCHAR},
+      </if>
+      <if test="xdproid != null" >
+        XDProid = #{xdproid,jdbcType=INTEGER},
+      </if>
+      <if test="iscommonloan != null" >
+        IsCommonLoan = #{iscommonloan,jdbcType=CHAR},
+      </if>
+      <if test="quitreason != null" >
+        QuitReason = #{quitreason,jdbcType=INTEGER},
+      </if>
+      <if test="lastoperationtime != null" >
+        LastOperationTime = #{lastoperationtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ordertype != null" >
+        OrderType = #{ordertype,jdbcType=INTEGER},
+      </if>
+      <if test="isonline != null" >
+        IsOnline = #{isonline,jdbcType=INTEGER},
+      </if>
+      <if test="bindingid != null" >
+        BindingID = #{bindingid,jdbcType=VARCHAR},
+      </if>
+      <if test="timestamp != null" >
+        TIMESTAMP = #{timestamp,jdbcType=BINARY},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.yingu.project.persistence.mysql.entity.XDOrder_Table" >
+    update XDOrder_Table
+    set ordernum = #{ordernum,jdbcType=VARCHAR},
+      OrderTime = #{ordertime,jdbcType=TIMESTAMP},
+      ProID = #{proid,jdbcType=INTEGER},
+      ProName = #{proname,jdbcType=VARCHAR},
+      UserID = #{userid,jdbcType=INTEGER},
+      UserName = #{username,jdbcType=NVARCHAR},
+      Family = #{family,jdbcType=BIT},
+      MarID = #{marid,jdbcType=INTEGER},
+      MarName = #{marname,jdbcType=NVARCHAR},
+      Rate = #{rate,jdbcType=DECIMAL},
+      zhengxin = #{zhengxin,jdbcType=BIT},
+      OrderState = #{orderstate,jdbcType=VARCHAR},
+      Loan = #{loan,jdbcType=DECIMAL},
+      ActuaLoan = #{actualoan,jdbcType=DECIMAL},
+      LoanTime = #{loantime,jdbcType=VARCHAR},
+      SaleChannel = #{salechannel,jdbcType=VARCHAR},
+      Urgent = #{urgent,jdbcType=BIT},
+      FuYi = #{fuyi,jdbcType=VARCHAR},
+      LoanUse = #{loanuse,jdbcType=NVARCHAR},
+      RufundWay = #{rufundway,jdbcType=NVARCHAR},
+      SalesName = #{salesname,jdbcType=NVARCHAR},
+      SalesID = #{salesid,jdbcType=INTEGER},
+      UseCard = #{usecard,jdbcType=VARCHAR},
+      RollBackState = #{rollbackstate,jdbcType=VARCHAR},
+      ISPhoto = #{isphoto,jdbcType=BIT},
+      Stated = #{stated,jdbcType=NVARCHAR},
+      admin_id = #{adminId,jdbcType=INTEGER},
+      admin_nickname = #{adminNickname,jdbcType=NVARCHAR},
+      XDExtendLoan = #{xdextendloan,jdbcType=DECIMAL},
+      XDExtendTime = #{xdextendtime,jdbcType=NVARCHAR},
+      XDExtendRate = #{xdextendrate,jdbcType=NVARCHAR},
+      XDProid = #{xdproid,jdbcType=INTEGER},
+      IsCommonLoan = #{iscommonloan,jdbcType=CHAR},
+      QuitReason = #{quitreason,jdbcType=INTEGER},
+      LastOperationTime = #{lastoperationtime,jdbcType=TIMESTAMP},
+      OrderType = #{ordertype,jdbcType=INTEGER},
+      IsOnline = #{isonline,jdbcType=INTEGER},
+      BindingID = #{bindingid,jdbcType=VARCHAR},
+      TIMESTAMP = #{timestamp,jdbcType=BINARY}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yingu.project.persistence.mysql.entity.XDOrder_Table" >
+    update XDOrder_Table
+    set ordernum = #{ordernum,jdbcType=VARCHAR},
+      OrderTime = #{ordertime,jdbcType=TIMESTAMP},
+      ProID = #{proid,jdbcType=INTEGER},
+      ProName = #{proname,jdbcType=VARCHAR},
+      UserID = #{userid,jdbcType=INTEGER},
+      UserName = #{username,jdbcType=NVARCHAR},
+      Family = #{family,jdbcType=BIT},
+      MarID = #{marid,jdbcType=INTEGER},
+      MarName = #{marname,jdbcType=NVARCHAR},
+      Rate = #{rate,jdbcType=DECIMAL},
+      zhengxin = #{zhengxin,jdbcType=BIT},
+      OrderState = #{orderstate,jdbcType=VARCHAR},
+      Loan = #{loan,jdbcType=DECIMAL},
+      ActuaLoan = #{actualoan,jdbcType=DECIMAL},
+      LoanTime = #{loantime,jdbcType=VARCHAR},
+      SaleChannel = #{salechannel,jdbcType=VARCHAR},
+      Urgent = #{urgent,jdbcType=BIT},
+      FuYi = #{fuyi,jdbcType=VARCHAR},
+      LoanUse = #{loanuse,jdbcType=NVARCHAR},
+      RufundWay = #{rufundway,jdbcType=NVARCHAR},
+      SalesName = #{salesname,jdbcType=NVARCHAR},
+      SalesID = #{salesid,jdbcType=INTEGER},
+      UseCard = #{usecard,jdbcType=VARCHAR},
+      RollBackState = #{rollbackstate,jdbcType=VARCHAR},
+      ISPhoto = #{isphoto,jdbcType=BIT},
+      Stated = #{stated,jdbcType=NVARCHAR},
+      admin_id = #{adminId,jdbcType=INTEGER},
+      admin_nickname = #{adminNickname,jdbcType=NVARCHAR},
+      XDExtendLoan = #{xdextendloan,jdbcType=DECIMAL},
+      XDExtendTime = #{xdextendtime,jdbcType=NVARCHAR},
+      XDExtendRate = #{xdextendrate,jdbcType=NVARCHAR},
+      XDProid = #{xdproid,jdbcType=INTEGER},
+      IsCommonLoan = #{iscommonloan,jdbcType=CHAR},
+      QuitReason = #{quitreason,jdbcType=INTEGER},
+      LastOperationTime = #{lastoperationtime,jdbcType=TIMESTAMP},
+      OrderType = #{ordertype,jdbcType=INTEGER},
+      IsOnline = #{isonline,jdbcType=INTEGER},
+      BindingID = #{bindingid,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByOrderNum" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from XDOrder_Table
+    where ordernum = #{ordernum,jdbcType=VARCHAR}
+  </select>
+</mapper>

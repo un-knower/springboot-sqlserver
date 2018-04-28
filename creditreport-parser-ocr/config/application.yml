@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: creditreport-parser-ocr
+  profiles:
+    active: dev
+
+server:
+  port: 8899
+
+logging:
+  config: config/logback.xml
+
+api-config:
+  abbyy_dll_folder: /opt/ABBYY/FREngine11/Bin
+  abbyy_serial_number: SWTT-1101-1006-4222-4068-3677
+
+---
+spring:
+  profiles: dev
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://172.24.132.107:9001/eureka/
+  instance:
+    #是否使用IP定义注册中心的地址
+    preferIpAddress: true

@@ -1,0 +1,70 @@
+spring:
+  application:
+    name: creditreport-parser-rest
+  profiles:
+    active: dev
+
+server:
+  port: 8804
+
+logging:
+  config: config/logback.xml
+
+api-config:
+  creditword_path: D:\word\
+  creditword_sucess_path: D:\analysedword\success
+  creditword_fail_path: D:\analysedword\fail
+  creditpdf_source: D:\creditpdfsource\
+  creditpdf_success: D:\creditpdf\success\
+  creditpdf_fail: D:\creditpdf\fail\
+#  creditpdf_source: /home/creditreportparser/pdfsource
+#  creditpdf_success: /home/creditreportparser/pdfsuccess
+#  creditpdf_fail: /home/creditreportparser/pdffail
+  abbyy_dll_folder: /opt/ABBYY/FREngine11/Bin
+  abbyy_serial_number: SWTT-1101-1006-4222-4068-3677
+#  扫描文件夹为空,延时时间(毫秒)
+  scan_delay_time: 10000
+#  是否开启自动解析word文件夹中文档
+  open_analyse_word: false
+#  是否保存重复的案件编号文档
+  save_repeat_report: true
+
+oss-config:
+   endpoint: http://oss-cn-shanghai.aliyuncs.com
+   accesskeyid: LTAIOBwj156FRrAS
+   accesskeysecret: l9TH1YPLglnVKgNctme9KsJ8w9k2Wx
+   bucketname: ygzxjk-qz-test
+   viewfile: http://ygzxjk-qz-test.oss-cn-shanghai.aliyuncs.com/
+#   是否开启,开发阶段改成false,减少oss资源占用
+   isopen: true
+
+---
+spring:
+  profiles: dev
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:sqlserver://10.0.128.114:1433; DatabaseName=YINGUSYSTEM
+    username: sa
+    password: 123.abc
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    hikari:
+      idle-timeout: 150000
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/risk_credit
+mybatis:
+  typeAliasesPackage: com.yingu.project.persistence.mysql.entity
+#  mapperLocations: classpath:src/mapper/*.xml
+  mapperLocations: classpath*:com/yingu/project/persistence/mysql/mapping/*.xml
+
+eureka:
+  client:
+    registerWithEureka: false
+    serviceUrl:
+      defaultZone: http://172.24.132.107:9001/eureka/
+  instance:
+    #是否使用IP定义注册中心的地址
+    preferIpAddress: true
+
+
+
