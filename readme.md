@@ -6,3 +6,7 @@ http://localhost:8802/swagger-ui.html
 
 注意:
 1.需要安装lombok插件,方法url:http://blog.csdn.net/zhglance/article/details/54931430
+
+
+当前项目说明:
+1.spring boot连接sqlserver数据库的demo
